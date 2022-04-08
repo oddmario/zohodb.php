@@ -202,7 +202,6 @@ class ZohoAuthHandler {
             "grant_type=authorization_code"
         );
         $ts = time();
-        $reqs = new ZohoDBRequests();
         $tokenreq = $this->rh->request("$ZOHO_OAUTH_API_BASE/token?" . join("&", $request_token_params), 1);
         $tokenres = json_decode($tokenreq, true);
         if( !isset($tokenres['access_token']) ) {
@@ -222,7 +221,6 @@ class ZohoAuthHandler {
             "grant_type=refresh_token"
         );
         $ts = time();
-        $reqs = new ZohoDBRequests();
         $tokenreq = $this->rh->request("$ZOHO_OAUTH_API_BASE/token?" . join("&", $req_params), 1);
         $tokenres = json_decode($tokenreq, true);
         if( !isset($tokenres['access_token']) ) {
